@@ -12,12 +12,12 @@ Modifier : none
   padding: vars.$gutter*3 0;
   text-align: center;
 
-  &--title{
+  &__title{
     font-size: 2em;
     font-weight: 700;
   }
 
-  &--amount {
+  &__amount {
     margin-top: vars.$gutter;
     font-size: 1.3em;
   }

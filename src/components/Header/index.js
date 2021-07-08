@@ -5,10 +5,10 @@ import './styles.scss';
 
 const Header = () => (
   <header className="header">
-    <h1 className="header--title">
+    <h1 className="header__title">
       Convertor
     </h1>
-    <p className="header--amount">
+    <p className="header__amount">
       1 euro
     </p>
   </header>

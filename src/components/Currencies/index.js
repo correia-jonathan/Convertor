@@ -5,8 +5,8 @@ import './styles.scss';
 
 const Currencies = () => (
   <section className="currencies">
-    <div className="currencies--title">Currencies</div>
-    <ul className="currencies--list">
+    <div className="currencies__title">Currencies</div>
+    <ul className="currencies__list">
       <li>Eur</li>
       <li>Livres</li>
       <li>Pesos</li>

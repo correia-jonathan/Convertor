@@ -10,12 +10,12 @@ Modifier :
   padding: vars.$gutter * 3 0;
   text-align: center;
   
-    &--value{
+    &__value{
       font-weight: bold;
       font-size: 200;
     }
 
-    &--currency{
+    &__currency{
       font-size: 1.3em;
       margin-top: vars.$gutter;
     }

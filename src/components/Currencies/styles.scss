@@ -10,15 +10,15 @@ Modifier :
   max-height: 250px;
   overflow-y: auto;
 
-  &--title{
+  &__title{
     padding: vars.$gutter;
     margin-top: vars.$gutter;
     font-weight: bold;
   }
-  &--list{
+  &__list{
     
   }
-  &--list li{
+  &__list li{
     padding: vars.$gutter;
     border-top: 1px solid vars.$color-alt;
     font-weight: 500;
