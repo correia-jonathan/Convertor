@@ -10,13 +10,14 @@ import Currencies from '../Currencies';
 import Amount from '../Amount';
 
 import './styles.scss';
+import currenciesList from '../../data/currencies';
 
 // == Composant
 const App = () => (
   <div className="convertor">
     <Header />
     <main>
-      <Currencies />
+      <Currencies list={currenciesList} />
       <Amount />
     </main>
     <footer>

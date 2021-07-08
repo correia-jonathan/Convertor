@@ -1,34 +1,41 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // Importation des styles du composant
 import './styles.scss';
-
-const Currencies = () => (
+/* list est la props déversée dans le composant Currencies */
+const Currencies = ({ list }) => (
   <section className="currencies">
     <div className="currencies__title">Currencies</div>
     <ul className="currencies__list">
+      {
+        /* 
+        Pour manipuler ma props list je lui assigne la fonction map
+        chaque entrée de list parcouru par la fonction map est désigné comme étant currencyObject
+        */
+        list.map((currencyObject) => (
+          /* 
+          J'affiche le champs name de currencyObject
+          le mapping requière que l'on attribue une clés à chaque <li> génére,
+          sans cela une erreur apparait dans la console
+          */
+          <li key={currencyObject.name}>
+            {currencyObject.name}
+          </li>
+        ))
+      }
       <li>Eur</li>
-      <li>Livres</li>
-      <li>Pesos</li>
-      <li>Dollars</li>
-      <li>Rouble</li>
-      <li>Eur</li>
-      <li>Livres</li>
-      <li>Pesos</li>
-      <li>Dollars</li>
-      <li>Rouble</li>
-      <li>Eur</li>
-      <li>Livres</li>
-      <li>Pesos</li>
-      <li>Dollars</li>
-      <li>Rouble</li>
-      <li>Eur</li>
-      <li>Livres</li>
-      <li>Pesos</li>
-      <li>Dollars</li>
-      <li>Rouble</li>
     </ul>
   </section>
 );
+
+Currencies.propTypes = {
+  list: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      rate: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+};
 
 export default Currencies;
