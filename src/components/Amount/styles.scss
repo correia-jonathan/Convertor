@@ -1,0 +1,22 @@
+@use 'src/styles/vars';
+/*
+J'utilise la nomenclature B.E.M pour traiter la mise en page de mon composant
+Bloc: amount
+Elements : value, currency
+Modifier : 
+*/
+.amount {
+  background-color: vars.$color-light;
+  padding: vars.$gutter * 3 0;
+  text-align: center;
+  
+    &--value{
+      font-weight: bold;
+      font-size: 200;
+    }
+
+    &--currency{
+      font-size: 1.3em;
+      margin-top: vars.$gutter;
+    }
+}

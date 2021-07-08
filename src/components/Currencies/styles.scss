@@ -1,0 +1,32 @@
+@use 'src/styles/vars';
+/*
+J'utilise la nomenclature B.E.M pour traiter la mise en page de mon composant
+Bloc: currencies 
+Elements : 
+Modifier : 
+*/
+.currencies{
+  background-color: vars.$color-light;
+  max-height: 250px;
+  overflow-y: auto;
+
+  &--title{
+    padding: vars.$gutter;
+    margin-top: vars.$gutter;
+    font-weight: bold;
+  }
+  &--list{
+    
+  }
+  &--list li{
+    padding: vars.$gutter;
+    border-top: 1px solid vars.$color-alt;
+    font-weight: 500;
+    transition: background-color 1s;
+    cursor: pointer;
+    &:hover{
+      background-color: vars.$color-alt;
+      transition-duration: vars.$transition-fast;
+    }
+  }
+}

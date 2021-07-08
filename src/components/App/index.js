@@ -3,13 +3,25 @@ import React from 'react';
 
 // == Import
 import reactLogo from './react-logo.svg';
-import './styles.css';
+
+// == Import sous composant
+import Header from '../Header';
+import Currencies from '../Currencies';
+import Amount from '../Amount';
+
+import './styles.scss';
 
 // == Composant
 const App = () => (
-  <div className="app">
-    <img src={reactLogo} alt="react logo" />
-    <h1>Composant : App</h1>
+  <div className="convertor">
+    <Header />
+    <main>
+      <Currencies />
+      <Amount />
+    </main>
+    <footer>
+      &copy; corjo-design 2021
+    </footer>
   </div>
 );
 
