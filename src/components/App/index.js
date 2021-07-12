@@ -14,7 +14,9 @@ import currenciesList from '../../data/currencies';
 
 class App extends React.Component {
   state = {
+    baseAmount: 1,
     isVisible: true,
+    currency: 'United States Dollar',
     /* placer dans le state la liste de currenciesList */
     currenciesStateList: currenciesList,
   };
@@ -26,19 +28,27 @@ class App extends React.Component {
     });
   }
 
+  makeConversion = () => {
+    const { currency, baseAmount } = this.state;
+    const devise = currenciesList.find((deviseObject) => deviseObject.name === currency);
+
+    const result = baseAmount * devise.rate;
+    return Math.round(result * 100) / 100;
+  }
+
   render() {
-    const { isVisible } = this.state;
+    const { isVisible, ratio, currency, baseAmount } = this.state;
     const { currenciesStateList } = this.state;
     return (
       <div className="convertor">
-        <Header baseAmount={5} />
+        <Header baseAmount={baseAmount} />
         <Toggle onToggleClick={this.toggle} isOpened={isVisible} />
         <main>
           {
             // isVisible && <Currencies list={currenciesList} />
             isVisible && <Currencies list={currenciesStateList} />
           }
-          <Amount currency="gold coins" amount={1.09} />
+          <Amount currency={currency} amount={this.makeConversion()} />
         </main>
         <footer>
           &copy; corjo-design 2021
