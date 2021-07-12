@@ -9,12 +9,12 @@ const Currencies = ({ list }) => (
     <div className="currencies__title">Currencies</div>
     <ul className="currencies__list">
       {
-        /* 
+        /*
         Pour manipuler ma props list je lui assigne la fonction map
         chaque entrée de list parcouru par la fonction map est désigné comme étant currencyObject
         */
         list.map((currencyObject) => (
-          /* 
+          /*
           J'affiche le champs name de currencyObject
           le mapping requière que l'on attribue une clés à chaque <li> génére,
           sans cela une erreur apparait dans la console
@@ -34,8 +34,9 @@ Currencies.propTypes = {
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       rate: PropTypes.number.isRequired,
-    })
+    }).isRequired,
   ).isRequired,
+  // test: PropTypes.func.isRequired,
 };
 
 export default Currencies;
