@@ -13,7 +13,7 @@ const Amount = ({ currency, amount }) => (
 
 Amount.propTypes = {
   currency: PropTypes.string.isRequired,
-  amount:   PropTypes.func.isRequired,
+  amount:   PropTypes.number.isRequired,
 };
 
 export default Amount;

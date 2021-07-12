@@ -30,14 +30,24 @@ class App extends React.Component {
 
   makeConversion = () => {
     const { currency, baseAmount } = this.state;
+    /* ma constante devise est un objet, qui est le resultat de la recherche (find) sur 
+    ma list currenciesList.
+    Ma recherche parcours chaque entrée désigné comme deviseObject et compare deviseObject à
+    currency */
     const devise = currenciesList.find((deviseObject) => deviseObject.name === currency);
 
     const result = baseAmount * devise.rate;
     return Math.round(result * 100) / 100;
   }
 
+  handleCurrencyClick = (param) => {
+    this.setState({
+      currency: param,
+    });
+  }
+
   render() {
-    const { isVisible, ratio, currency, baseAmount } = this.state;
+    const { isVisible, currency, baseAmount } = this.state;
     const { currenciesStateList } = this.state;
     return (
       <div className="convertor">
@@ -46,7 +56,8 @@ class App extends React.Component {
         <main>
           {
             // isVisible && <Currencies list={currenciesList} />
-            isVisible && <Currencies list={currenciesStateList} />
+            isVisible 
+            && <Currencies list={currenciesStateList} onCurrencyClick={this.handleCurrencyClick} />
           }
           <Amount currency={currency} amount={this.makeConversion()} />
         </main>

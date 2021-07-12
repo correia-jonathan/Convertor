@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // Importation des styles du composant
 import './styles.scss';
 /* list est la props déversée dans le composant Currencies */
-const Currencies = ({ list }) => (
+const Currencies = ({ list, onCurrencyClick }) => (
   <section className="currencies">
     <div className="currencies__title">Currencies</div>
     <ul className="currencies__list">
@@ -19,7 +19,12 @@ const Currencies = ({ list }) => (
           le mapping requière que l'on attribue une clés à chaque <li> génére,
           sans cela une erreur apparait dans la console
           */
-          <li key={currencyObject.name}>
+          <li
+            key={currencyObject.name}
+            onClick={() => {
+              onCurrencyClick(currencyObject.name);
+            }}
+          >
             {currencyObject.name}
           </li>
         ))
@@ -36,7 +41,7 @@ Currencies.propTypes = {
       rate: PropTypes.number.isRequired,
     }).isRequired,
   ).isRequired,
-  // test: PropTypes.func.isRequired,
+  onCurrencyClick: PropTypes.func.isRequired,
 };
 
 export default Currencies;
