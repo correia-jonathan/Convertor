@@ -15,18 +15,23 @@ Modifier :
     margin-top: vars.$gutter;
     font-weight: bold;
   }
-  &__list{
-    
-  }
+
   &__list li{
     padding: vars.$gutter;
     border-top: 1px solid vars.$color-alt;
     font-weight: 500;
     transition: background-color 1s;
     cursor: pointer;
+
     &:hover{
       background-color: vars.$color-alt;
       transition-duration: vars.$transition-fast;
     }
   }
+  // Ajout de la classe selected au li
+  &__list li.--selected{
+    background-color:vars.$color-alt;
+  }
 }
+
+

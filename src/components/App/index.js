@@ -16,7 +16,7 @@ class App extends React.Component {
   state = {
     baseAmount: 1,
     isVisible: true,
-    currency: 'United States Dollar',
+    currency: 'Australian Dollar',
     /* placer dans le state la liste de currenciesList */
     currenciesStateList: currenciesList,
   };
@@ -52,12 +52,12 @@ class App extends React.Component {
     return (
       <div className="convertor">
         <Header baseAmount={baseAmount} />
-        <Toggle onToggleClick={this.toggle} isOpened={isVisible} />
+        <Toggle onToggleClick={this.toggle} isOpened={isVisible} stateCurrency={currency} />
         <main>
           {
-            // isVisible && <Currencies list={currenciesList} />
-            isVisible 
-            && <Currencies list={currenciesStateList} onCurrencyClick={this.handleCurrencyClick} />
+            isVisible
+            && <Currencies list={currenciesStateList} 
+              onCurrencyClick={this.handleCurrencyClick} currencyState={currency} />
           }
           <Amount currency={currency} amount={this.makeConversion()} />
         </main>

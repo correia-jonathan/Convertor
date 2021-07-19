@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // Importation des styles du composant
 import './styles.scss';
 /* list est la props déversée dans le composant Currencies */
-const Currencies = ({ list, onCurrencyClick }) => (
+const Currencies = ({ list, onCurrencyClick, currencyState }) => (
   <section className="currencies">
     <div className="currencies__title">Currencies</div>
     <ul className="currencies__list">
@@ -13,21 +13,24 @@ const Currencies = ({ list, onCurrencyClick }) => (
         Pour manipuler ma props list je lui assigne la fonction map
         chaque entrée de list parcouru par la fonction map est désigné comme étant currencyObject
         */
-        list.map((currencyObject) => (
-          /*
-          J'affiche le champs name de currencyObject
-          le mapping requière que l'on attribue une clés à chaque <li> génére,
-          sans cela une erreur apparait dans la console
-          */
-          <li
-            key={currencyObject.name}
-            onClick={() => {
-              onCurrencyClick(currencyObject.name);
-            }}
-          >
-            {currencyObject.name}
-          </li>
-        ))
+        list.map((currencyObject) => {
+          const classToApply = currencyObject.name === currencyState ? '--selected' : '';
+          return (
+            /*
+            J'affiche le champs name de currencyObject
+            le mapping requière que l'on attribue une clés à chaque <li> génére,
+            sans cela une erreur apparait dans la console
+            */
+            <li
+              key={currencyObject.name}
+              onClick={() => {
+                onCurrencyClick(currencyObject.name);
+              }}
+              className={classToApply}
+            >
+              {currencyObject.name}
+            </li>
+          )})
       }
       <li>Eur</li>
     </ul>
@@ -42,6 +45,7 @@ Currencies.propTypes = {
     }).isRequired,
   ).isRequired,
   onCurrencyClick: PropTypes.func.isRequired,
+  currencyState: PropTypes.string.isRequired,
 };
 
 export default Currencies;
