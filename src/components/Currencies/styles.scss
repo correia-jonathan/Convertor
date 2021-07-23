@@ -32,6 +32,18 @@ Modifier :
   &__list li.--selected{
     background-color:vars.$color-alt;
   }
+
+  &__search{
+    padding: vars.$gutter;
+    margin-top: vars.$gutter;
+    width: 100%;
+    border: none;
+    color: vars.$color-main;
+    font: inherit;
+    &::placeholder{
+      color: vars.$color-alt;
+    }
+  }
 }
 
 

@@ -17,6 +17,7 @@ class App extends React.Component {
     baseAmount: 1,
     isVisible: true,
     currency: 'Australian Dollar',
+    filterText: '',
     /* placer dans le state la liste de currenciesList */
     currenciesStateList: currenciesList,
   };
@@ -46,18 +47,52 @@ class App extends React.Component {
     });
   }
 
+  filterCurrencies = () => {
+    const { filterText } = this.state;
+    const { currenciesStateList } = this.state;
+
+    const filterResult = currenciesStateList.filter((deviseObject) => {
+      // Étape intermédiare pour tout mettre en minuscule
+      const nameLowerCase = deviseObject.name.toLowerCase();
+      const filterLowerCase = filterText.toLowerCase();
+      return nameLowerCase.includes(filterLowerCase);
+    });
+    // Return un nouveau tableau de currenculist filtrée
+    // utiliser filter()
+    // ATTENTION il faut return le nouveau tableau obtenu
+    return filterResult;
+  }
+
+  handleCurrencyInput = (param) => {
+    this.setState({
+      filterText: param,
+    });
+  }
+
+  handleBaseAmount = (inputBaseAmount) => {
+    this.setState({
+      baseAmount: inputBaseAmount,
+    });
+  }
+
   render() {
     const { isVisible, currency, baseAmount } = this.state;
-    const { currenciesStateList } = this.state;
+    // const { currenciesStateList } = this.state;
     return (
       <div className="convertor">
-        <Header baseAmount={baseAmount} />
+        <Header baseAmount={baseAmount} amountInput={this.handleBaseAmount} />
         <Toggle onToggleClick={this.toggle} isOpened={isVisible} stateCurrency={currency} />
         <main>
           {
             isVisible
-            && <Currencies list={currenciesStateList} 
-              onCurrencyClick={this.handleCurrencyClick} currencyState={currency} />
+            && (
+              <Currencies
+                list={this.filterCurrencies()}
+                onCurrencyClick={this.handleCurrencyClick}
+                currencyState={currency}
+                currencyInput={this.handleCurrencyInput}
+              />
+            )
           }
           <Amount currency={currency} amount={this.makeConversion()} />
         </main>

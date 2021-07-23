@@ -4,9 +4,18 @@ import PropTypes from 'prop-types';
 // Importation des styles du composant
 import './styles.scss';
 /* list est la props déversée dans le composant Currencies */
-const Currencies = ({ list, onCurrencyClick, currencyState }) => (
+const Currencies = ({ list, onCurrencyClick, currencyState, currencyInput }) => (
   <section className="currencies">
-    <div className="currencies__title">Currencies</div>
+    <input
+      className="currencies__search"
+      type="text"
+      placeholder="Rechercher"
+      // value = {}
+      onChange={(evt) => {
+        currencyInput(evt.target.value);
+        // j'utilise une fonction pour transmettre les changements de mon composant à mon state
+      }}
+      />
     <ul className="currencies__list">
       {
         /*
@@ -32,7 +41,6 @@ const Currencies = ({ list, onCurrencyClick, currencyState }) => (
             </li>
           )})
       }
-      <li>Eur</li>
     </ul>
   </section>
 );
@@ -46,6 +54,7 @@ Currencies.propTypes = {
   ).isRequired,
   onCurrencyClick: PropTypes.func.isRequired,
   currencyState: PropTypes.string.isRequired,
+  currencyInput: PropTypes.func.isRequired,
 };
 
 export default Currencies;

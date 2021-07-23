@@ -21,4 +21,16 @@ Modifier : none
     margin-top: vars.$gutter;
     font-size: 1.3em;
   }
+  &__input{
+    margin-top: vars.$gutter;
+    padding: vars.$gutter;
+    // width: 100%;
+    border: none;
+    color: vars.$color-main;
+    font: inherit;
+    font-weight: bold;
+    &::placeholder{
+      color: vars.$color-alt;
+    }
+  }
 }

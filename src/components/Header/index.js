@@ -4,15 +4,24 @@ import PropTypes from 'prop-types';
 // Importation des styles du composant
 import './styles.scss';
 
-const Header = ({ baseAmount }) => {
-  const text = baseAmount > 1 ? 'euros' : 'euro' ;
+const Header = ({ baseAmount, amountInput }) => {
+  const text = baseAmount > 1 ? 'euros' : 'euro';
   return (
     <header className="header">
       <h1 className="header__title">
         Convertor
       </h1>
+      <input
+        className="header__input"
+        type="text"
+        placeholder={baseAmount}
+        onChange={(evt) =>{
+          amountInput(evt.target.value);
+        }}
+      />
+      <span />
       <p className="header__amount">
-        {baseAmount} {text}
+        {text}
       </p>
     </header>
   );
@@ -20,5 +29,6 @@ const Header = ({ baseAmount }) => {
 
 Header.propTypes = {
   baseAmount: PropTypes.number.isRequired,
+  amountInput: PropTypes.func.isRequired,
 };
 export default Header;
