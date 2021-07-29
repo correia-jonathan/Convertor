@@ -31,7 +31,7 @@ class App extends React.Component {
 
   makeConversion = () => {
     const { currency, baseAmount } = this.state;
-    /* ma constante devise est un objet, qui est le resultat de la recherche (find) sur 
+    /* ma constante devise est un objet, qui est le resultat de la recherche (find) sur
     ma list currenciesList.
     Ma recherche parcours chaque entrée désigné comme deviseObject et compare deviseObject à
     currency */

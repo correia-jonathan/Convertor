@@ -33,4 +33,11 @@ Modifier : none
       color: vars.$color-alt;
     }
   }
+  /* code CSS pour effacer les flèches d'un input de type number */
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
 }

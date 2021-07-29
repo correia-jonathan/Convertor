@@ -13,10 +13,13 @@ const Header = ({ baseAmount, amountInput }) => {
       </h1>
       <input
         className="header__input"
-        type="text"
+        type="number"
+        defaultValue={baseAmount}
         placeholder={baseAmount}
         onChange={(evt) =>{
-          amountInput(evt.target.value);
+          const string = evt.target.value;
+          const number = Number(string);
+          amountInput(number);
         }}
       />
       <span />
