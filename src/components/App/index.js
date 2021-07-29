@@ -12,6 +12,8 @@ import Toggle from '../Toggle';
 import './styles.scss';
 import currenciesList from '../../data/currencies';
 
+/* la class App est une façon de façon de coder qui est désuet mais importante
+pour reprendre un code legacy  */
 class App extends React.Component {
   state = {
     baseAmount: 1,
@@ -75,9 +77,18 @@ class App extends React.Component {
     });
   }
 
+  componentDidMount= () => {
+    const {currency} = this.state;
+    document.title = `convertor € -> ${currency}`;
+  };
+
+  componentDidUpdate=()=>{
+    const {currency} = this.state;
+    document.title = `convertor € -> ${currency}`;
+  }
+
   render() {
-    const { isVisible, currency, baseAmount } = this.state;
-    // const { currenciesStateList } = this.state;
+    const { isVisible, currency, baseAmount, filterText } = this.state;
     return (
       <div className="convertor">
         <Header baseAmount={baseAmount} amountInput={this.handleBaseAmount} />
@@ -91,6 +102,7 @@ class App extends React.Component {
                 onCurrencyClick={this.handleCurrencyClick}
                 currencyState={currency}
                 currencyInput={this.handleCurrencyInput}
+                stateInputText={filterText}
               />
             )
           }
@@ -103,20 +115,6 @@ class App extends React.Component {
     );
   }
 }
-
-// == Composant
-/* const App = () => (
-  <div className="convertor">
-    <Header baseAmount={1} />
-    <main>
-      <Currencies list={currenciesList} />
-      <Amount currency="gold coins" amount={1.09} />
-    </main>
-    <footer>
-      &copy; corjo-design 2021
-    </footer>
-  </div> 
-);*/
 
 // == Export
 export default App;
